@@ -1,6 +1,7 @@
 # SOC Automation Home Lab README
 ## Overview
 This project automates the detection and response workflow in a Security Operations Center (SOC) environment. It leverages Wazuh for threat detection on a Windows 10 virtual machine (VM) and integrates Sysmon for enhanced logging. The setup includes running the Wazuh dashboard and TheHive on DigitalOcean droplets, with Shuffler.io orchestrating the workflow. Detections are sent to VirusTotal for analysis, and alerts are managed in TheHive, with notifications sent to analysts via email.
+![Network Map:](https://github.com/TheodoreC13/SOC-Automation-Project/blob/main/SOCDiagram.png)
 
 ## Prerequisites
 * Windows 10 VM: Set up a Windows 10 virtual machine.
@@ -72,26 +73,27 @@ Once everything is configured:
 
 ### Troubleshooting
 
-    Wazuh Not Detecting Events: Check log configurations and ensure the Wazuh agent is running properly. Ensure you get detections before trying to integrate The Hive.
+Wazuh Not Detecting Events: Check log configurations and ensure the Wazuh agent is running properly. Ensure you get detections before trying to integrate The Hive.
 ![SuccessfulDetection](https://github.com/TheodoreC13/SOC-Automation-Project/blob/main/Images/shuffle1.png)
-    Wazuh Agent Pending State: A few times upon startup my agent would get stuck in the pending state.
+Wazuh Agent Pending State: A few times upon startup my agent would get stuck in the pending state.
 ![Pending](https://github.com/TheodoreC13/SOC-Automation-Project/blob/main/Images/pending%20agent.png)
-	To Fix this I ran the agent restart tool.
+To Fix this I ran the agent restart tool.
 ![Restart](https://github.com/TheodoreC13/SOC-Automation-Project/blob/main/Images/agent-restart.png)
-    Sysmon Not Logging: Verify Sysmon installation and configuration to ensure it is capturing events correctly.
-    Shuffler.io Workflow Fails: Review the workflow configuration for any errors in API calls or steps.
-	* I specifically had to debug TheHive API call for my configuration
-	
-    TheHive Not Receiving Alerts: Verify TheHive API configuration and check network connectivity.
+Sysmon Not Logging: Verify Sysmon installation and configuration to ensure it is capturing events correctly.
+Shuffler.io Workflow Fails: Review the workflow configuration for any errors in API calls or steps.
+	* I specifically had to debug TheHive API call for my configuration. The file "TheHiveCreateAlertJson.txt" contains the Json request I used for The Hive Alert.
+TheHive Not Receiving Alerts: Verify TheHive API configuration and check network connectivity.
 
 ## Contributing
 This project is a proof of knowledge / proof of concept. No contributions are nessessary. 
 
 ## Configuration Files
 
-    Wazuh Configuration: ![WazuhCustomRule](https://github.com/TheodoreC13/SOC-Automation-Project/blob/main/Images/mimikatz%20rule.png)
+    Wazuh Configuration: 
+![WazuhCustomRule](https://github.com/TheodoreC13/SOC-Automation-Project/blob/main/Images/mimikatz%20rule.png)
 ![WazuhRuleCatch](https://github.com/TheodoreC13/SOC-Automation-Project/blob/main/Images/mimikatz%20rule%20catch.png)
-    Shuffler Workflow: ![Workflow](https://github.com/TheodoreC13/SOC-Automation-Project/blob/main/Images/Shuffler.io%20Workflow.png)
+    Shuffler Workflow: 
+![Workflow](https://github.com/TheodoreC13/SOC-Automation-Project/blob/main/Images/Shuffler.io%20Workflow.png)
 
 
 ## Screenshots
