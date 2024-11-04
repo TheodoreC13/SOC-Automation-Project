@@ -1,0 +1,13 @@
+{
+  "title": "Suspicious Activity Detected",
+  "description": "Multiple login attempts from unknown IP addresses.",
+  "tags": [
+    "suspicious",
+    "login_attempt"
+  ],
+  "type": "Alert",
+  "severity": 3,
+  "status": "New",
+  "source": "Automated Monitoring System",
+  "sourceRef": "source_identifier",
+}
