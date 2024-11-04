@@ -62,7 +62,7 @@ Analysis: The workflow sends the relevant file or URL to VirusTotal for scanning
 Incident Creation: Shuffler.io receives the analysis results and creates an incident in TheHive.
 Notification: Analysts are notified via email about the new incident.
 
-Usage
+### Usage
 
 Once everything is configured:
 
@@ -70,11 +70,18 @@ Once everything is configured:
     Upon detection, the automated workflow will take over.
     Analysts can review alerts in TheHive and respond as needed.
 
-Troubleshooting
+### Troubleshooting
 
-    Wazuh Not Detecting Events: Check log configurations and ensure the Wazuh agent is running properly.
+    Wazuh Not Detecting Events: Check log configurations and ensure the Wazuh agent is running properly. Ensure you get detections before trying to integrate The Hive.
+![SuccessfulDetection](https://github.com/TheodoreC13/SOC-Automation-Project/blob/main/Images/shuffle1.png)
+    Wazuh Agent Pending State: A few times upon startup my agent would get stuck in the pending state.
+![Pending](https://github.com/TheodoreC13/SOC-Automation-Project/blob/main/Images/pending%20agent.png)
+	To Fix this I ran the agent restart tool.
+![Restart](https://github.com/TheodoreC13/SOC-Automation-Project/blob/main/Images/agent-restart.png)
     Sysmon Not Logging: Verify Sysmon installation and configuration to ensure it is capturing events correctly.
     Shuffler.io Workflow Fails: Review the workflow configuration for any errors in API calls or steps.
+	* I specifically had to debug TheHive API call for my configuration
+	
     TheHive Not Receiving Alerts: Verify TheHive API configuration and check network connectivity.
 
 ## Contributing
@@ -82,9 +89,16 @@ This project is a proof of knowledge / proof of concept. No contributions are ne
 
 ## Configuration Files
 
-    Wazuh Configuration: See wazuh-agent.conf for my specific agent settings.
-    Sysmon Configuration: Review the Sysmon config in sysmon-config.xml.
-    Shuffler Workflow: The Shuffler workflow is detailed in shuffler-workflow.json.
-    TheHive Configuration: Review my TheHive settings in thehive-config.json.
+    Wazuh Configuration: ![WazuhCustomRule](https://github.com/TheodoreC13/SOC-Automation-Project/blob/main/Images/mimikatz%20rule.png)
+![WazuhRuleCatch](https://github.com/TheodoreC13/SOC-Automation-Project/blob/main/Images/mimikatz%20rule%20catch.png)
+    Shuffler Workflow: ![Workflow](https://github.com/TheodoreC13/SOC-Automation-Project/blob/main/Images/Shuffler.io%20Workflow.png)
+
 
 ## Screenshots
+Sysmon Mimikatz detection:
+![SYSMON mimikatz](https://github.com/TheodoreC13/SOC-Automation-Project/blob/main/Images/mimikatz%20sysmon.png)
+Mimikatz alert in wazuh for custom implemented rule:
+![MimiAlert](https://github.com/TheodoreC13/SOC-Automation-Project/blob/main/Images/MimiKatz%20Alert.png)
+Corresponding alert sent to TheHive:
+![TheHiveAlert](https://github.com/TheodoreC13/SOC-Automation-Project/blob/main/Images/TheHiveAlert.png)
+
